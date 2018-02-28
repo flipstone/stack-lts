@@ -1,8 +1,12 @@
 #!/bin/sh
 
+STACK_VERSION=1.6.5
+LTS_VERSION=10.7
+
+INTERNAL_VERSION=1
+
 docker build \
-  --build-arg GHC_VERSION=8.2.2 \
-  --build-arg STACK_VERSION=1.6.5 \
-  --build-arg LTS_VERSION=10.7 \
-  -t flipstone/stack-lts:v1-10.7 \
+  --build-arg STACK_VERSION=$STACK_VERSION \
+  --build-arg LTS_VERSION=$LTS_VERSION \
+  -t flipstone/stack-lts:v$INTERNAL_VERSION-$LTS_VERSION-$STACK_VERSION \
   .
