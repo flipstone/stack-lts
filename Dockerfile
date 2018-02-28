@@ -30,7 +30,5 @@ ENV STACK_ROOT=/stack-root
 RUN stack --resolver lts-$LTS_VERSION setup && \
     stack --resolver lts-$LTS_VERSION install stylish-haskell hlint intero
 
-VOLUME /stack-root
-
 ## run ghci by default unless a command is specified
 CMD ["stack", "ghci"]
