@@ -8,7 +8,7 @@ ARG LTS_VERSION
 ENV LANG            C.UTF-8
 
 RUN apt-get update && \
-    apt-get install -y curl gnupg2 ca-certificates g++ libgmp-dev libncurses-dev make xz-utils && \
+    apt-get install -y curl gnupg2 ca-certificates g++ libgmp-dev libncurses-dev make xz-utils git && \
 # fetch stack and the gpg sig
     curl -fSL https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64-static.tar.gz -o stack.tar.gz && \
     curl -fSL https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64-static.tar.gz.asc -o stack.tar.gz.asc && \
