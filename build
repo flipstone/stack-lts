@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -x
+set -e
 
 LTS_VERSION=$1
 
