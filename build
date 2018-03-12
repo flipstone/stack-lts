@@ -1,8 +1,16 @@
 #!/bin/sh
 
-STACK_VERSION=1.6.5
-LTS_VERSION=10.7
+set -x
 
+LTS_VERSION=$1
+
+if [[ "$LTS_VERSION" == "" ]]; then
+  echo "Usage: ./build <lts-version>"
+  exit 1
+fi
+
+
+STACK_VERSION=1.6.5
 INTERNAL_VERSION=1
 
 docker build \
@@ -10,3 +18,5 @@ docker build \
   --build-arg LTS_VERSION=$LTS_VERSION \
   -t flipstone/stack-lts:v$INTERNAL_VERSION-$LTS_VERSION-$STACK_VERSION \
   .
+
+echo "Build Complete. If you release this build, please remember to update the README.md file to document the release."
