@@ -2,7 +2,6 @@
 FROM       debian:stretch
 
 ARG STACK_VERSION
-ARG LTS_VERSION
 
 ## ensure locale is set during build
 ENV LANG            C.UTF-8
@@ -27,8 +26,5 @@ RUN apt-get update && \
 
 ENV PATH /root/.local/bin:$PATH
 ENV STACK_ROOT=/stack-root
-RUN stack --resolver lts-$LTS_VERSION setup && \
-    stack --resolver lts-$LTS_VERSION install stylish-haskell hlint intero
 
-## run ghci by default unless a command is specified
-CMD ["stack", "ghci"]
+CMD ["stack"]
