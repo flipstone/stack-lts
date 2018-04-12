@@ -1,5 +1,5 @@
 ## Dockerfile for a haskell environment
-FROM       debian:stretch
+FROM       debian:stretch-20180312
 
 ARG STACK_VERSION
 
