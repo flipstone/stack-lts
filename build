@@ -2,12 +2,11 @@
 
 set -ex
 
-STACK_VERSION=1.6.5
-INTERNAL_VERSION=1
+INTERNAL_VERSION="$1"
+STACK_VERSION="$2"
 
 docker build \
-  --build-arg STACK_VERSION=$STACK_VERSION \
-  -t flipstone/stack:v$INTERNAL_VERSION-$STACK_VERSION \
-  .
+  -t flipstone/stack:$INTERNAL_VERSION-$STACK_VERSION \
+  $INTERNAL_VERSION/$STACK_VERSION
 
 echo "Build Complete. If you release this build, please remember to update the README.md file to document the release."

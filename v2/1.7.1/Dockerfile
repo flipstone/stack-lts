@@ -1,7 +1,7 @@
 ## Dockerfile for a haskell environment
 FROM       debian:stretch-20180312
 
-ARG STACK_VERSION
+ENV STACK_VERSION 1.7.1
 
 ## ensure locale is set during build
 ENV LANG            C.UTF-8
@@ -9,8 +9,8 @@ ENV LANG            C.UTF-8
 RUN apt-get update && \
     apt-get install -y procps curl gnupg2 ca-certificates g++ libgmp-dev libncurses-dev make xz-utils git zlib1g-dev && \
 # fetch stack and the gpg sig
-    curl -fSL https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64-static.tar.gz -o stack.tar.gz && \
-    curl -fSL https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64-static.tar.gz.asc -o stack.tar.gz.asc && \
+    curl -fSL https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64.tar.gz -o stack.tar.gz && \
+    curl -fSL https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64.tar.gz.asc -o stack.tar.gz.asc && \
 # setup gpg and get keys
     export GNUPGHOME="$(mktemp -d)" && \
     gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys C5705533DA4F78D8664B5DC0575159689BEFB442 && \
