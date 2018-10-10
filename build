@@ -6,6 +6,7 @@ INTERNAL_VERSION="$1"
 STACK_VERSION="$2"
 
 docker build \
+  --cache-from flipstone/stack \
   -t flipstone/stack:$INTERNAL_VERSION-$STACK_VERSION \
   $INTERNAL_VERSION/$STACK_VERSION
 
