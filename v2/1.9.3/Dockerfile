@@ -13,7 +13,7 @@ RUN apt-get update && \
     curl -fSL https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64-static.tar.gz.asc -o stack.tar.gz.asc && \
 # setup gpg and get keys
     export GNUPGHOME="$(mktemp -d)" && \
-    gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys C5705533DA4F78D8664B5DC0575159689BEFB442 && \
+    gpg --batch --keyserver ipv4.pool.sks-keyservers.net --recv-keys C5705533DA4F78D8664B5DC0575159689BEFB442 && \
 # verify stack signature
     gpg --batch --verify stack.tar.gz.asc stack.tar.gz && \
 # we're done with curl and gnupg2 so purge them
