@@ -1,7 +1,7 @@
 ## Dockerfile for a haskell environment
 FROM       debian:stretch-20180312
 
-ENV STACK_VERSION 2.1.0.1
+ENV STACK_VERSION 2.1.0.3
 
 ## ensure locale is set during build
 ENV LANG            C.UTF-8
@@ -17,7 +17,7 @@ RUN apt-get update && \
 # extract stack and install it
     tar -xf stack.tar.gz -C /usr/local/bin --strip-components=1 && \
 # cleanup after ourselves and trim the image some
-    rm -rf "$GNUPGHOME" /var/lib/apt/lists/* /stack.tar.gz.asc /stack.tar.gz /usr/share/doc/* /usr/share/man/* /usr/local/share/doc/* /usr/local/share/man/* && \
+    rm -rf "$GNUPGHOME" /var/lib/apt/lists/* /stack.tar.gz.sha256 /stack.tar.gz /usr/share/doc/* /usr/share/man/* /usr/local/share/doc/* /usr/local/share/man/* && \
     apt-get clean
 
 ENV PATH /root/.local/bin:$PATH
