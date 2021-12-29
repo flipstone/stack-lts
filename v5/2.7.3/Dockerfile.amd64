@@ -1,5 +1,5 @@
 ## Dockerfile for a haskell environment
-FROM       debian:bullseye-20210511
+FROM       debian:bullseye-20211220-slim
 
 ENV STACK_VERSION 2.7.3
 
