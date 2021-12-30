@@ -1,4 +1,4 @@
-FROM debian:bullseye-20210511
+FROM arm64v8/debian:bullseye-20211220-slim AS builder
 
 ENV STACK_VERSION 2.7.3
 
@@ -48,9 +48,30 @@ RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/cl
     cp -R clang+llvm-9.0.1-aarch64-linux-gnu/* /llvm && \
     rm -r clang+llvm-9.0.1-aarch64-linux-gnu
 
-RUN mv /llvm /usr/local
+FROM arm64v8/debian:bullseye-20211220-slim AS deploy
 
-ENV PATH /root/.local/bin:$PATH
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      apt-transport-https \
+      ca-certificates \
+      git \
+      gnupg \
+      netbase \
+      libgmp-dev \
+      libnuma-dev \
+      libpq-dev \
+      libssl-dev \
+      libtinfo-dev \
+      libtinfo5 \
+      locales \
+      xz-utils \
+      zlib1g-dev
+
+COPY --from=builder /llvm /usr/local
+COPY --from=builder /usr/local/bin/stack /usr/local/bin
+
+RUN mkdir /stack-root
 ENV STACK_ROOT=/stack-root
+ENV PATH /root/.local/bin:$PATH
 
 CMD ["stack"]
