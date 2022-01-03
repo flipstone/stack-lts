@@ -42,11 +42,8 @@ RUN apt-get update && apt-get install wget
 RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/clang+llvm-9.0.1-aarch64-linux-gnu.tar.xz && \
     tar -xf clang+llvm-9.0.1-aarch64-linux-gnu.tar.xz && \
     rm clang+llvm-9.0.1-aarch64-linux-gnu.tar.xz && \
-    mkdir /llvm && \
-    cp -R clang+llvm-9.0.1-aarch64-linux-gnu/* /llvm && \
+    cp -R clang+llvm-9.0.1-aarch64-linux-gnu/* /usr/local && \
     rm -r clang+llvm-9.0.1-aarch64-linux-gnu
-
-RUN mv /llvm /usr/local
 
 RUN mkdir /stack-root
 ENV STACK_ROOT=/stack-root
