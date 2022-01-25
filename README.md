@@ -14,4 +14,8 @@
 | 2021-12-26 | v5            | 2.7.3              | x86-64, aarch64 |
 
 ## Versioning
-When making updates to this repo, if the contents of the docker image, besides the stack version, change, the image version should be updated.  The stack version within a particular docker image, does not necessitate an image version bump.  Additionally, any particular stack version could be used within multiple image versions.
+When making updates to this repo, if the contents of the docker image, besides
+the stack version, change, the image version should be updated.  The stack
+version within a particular docker image, does not necessitate an image version
+bump.  Additionally, any particular stack version could be used within multiple
+image versions.
