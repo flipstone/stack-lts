@@ -13,4 +13,6 @@ RUN /bin/sh /install_ghcup.sh
 
 RUN ghcup install stack 2.9.3
 
-CMD ["/root/.ghcup/bin/stack"]
+RUN echo 'export PATH=/root/.local/bin:/root/.ghcup/bin:$PATH' >> /root/.bashrc
+
+CMD ["stack"]
